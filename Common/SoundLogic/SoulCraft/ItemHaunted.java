@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;

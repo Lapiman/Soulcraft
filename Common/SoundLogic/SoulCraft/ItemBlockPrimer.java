@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;
@@ -63,5 +64,10 @@ public class ItemBlockPrimer extends Item
         {
             par3List.add(new ItemStack(par1, 1, var4));
         }
+    }
+    @Override
+    public void updateIcons(IconRegister par1IconRegister)
+    {
+        this.iconIndex = par1IconRegister.registerIcon(SoulMod.modid + ":" + this.getUnlocalizedName());
     }
 }
