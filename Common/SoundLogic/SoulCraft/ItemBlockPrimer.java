@@ -32,7 +32,8 @@ public class ItemBlockPrimer extends Item
     }
 
 
-    public String getItemNameIS(ItemStack par1ItemStack)
+    @Override
+    public String getUnlocalizedName(ItemStack par1ItemStack)
     {
     	return "item.soundlogic.primer."+par1ItemStack.getItemDamage();
     }
@@ -41,6 +42,7 @@ public class ItemBlockPrimer extends Item
      * Callback for item usage. If the item does something special on right clicking, he will have one of those. Return
      * True if something happen and false if it don't. This is for ITEMS, not BLOCKS
      */
+    @Override
     public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int blockX, int blockY, int blockZ, int par7, float par8, float par9, float par10)
     {
     	if(par3World.isRemote){return true;}
@@ -54,6 +56,7 @@ public class ItemBlockPrimer extends Item
     /**
      * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
      */
+    @Override
     public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
         for (int var4 = 0; var4 < 10; ++var4)

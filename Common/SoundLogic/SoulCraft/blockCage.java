@@ -21,10 +21,12 @@ public class blockCage extends Block
         this.setHardness(2.0F);
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
+    @Override
     public boolean isOpaqueCube()
     {
         return false;
     }
+    @Override
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
         for (int var4 = 0; var4 < 3; ++var4)
@@ -32,6 +34,7 @@ public class blockCage extends Block
             par3List.add(new ItemStack(par1, 1, var4));
         }
     }
+    @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
         
@@ -44,6 +47,7 @@ public class blockCage extends Block
         }
         return true;
     }
+    @Override
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
     	if(par5Entity instanceof EntityLiving && par1World.getBlockMetadata(par2,par3,par4)==0)
@@ -160,6 +164,7 @@ public class blockCage extends Block
     			world.setBlockMetadataWithNotify(x, y, z, blockID, 1);
     	}
     }
+    @Override
     public void updateTick(World world,int x, int y, int z, Random random)
     {
         if (world.isRemote)
@@ -208,6 +213,7 @@ public class blockCage extends Block
     			heat(world,x,y,z);
     	}
     }
+    @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
     {
     	blocksTemp(world,x,y,z);

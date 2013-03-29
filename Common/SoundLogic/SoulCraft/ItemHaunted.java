@@ -47,6 +47,7 @@ public class ItemHaunted extends Item{
 		}
 		return stack;
 	}
+    @Override
 	public String getItemDisplayName(ItemStack stack)
 	{
 		return "Haunted "+this.getBaseItemStack(stack).getDisplayName()+" : Level "+stack.getItemDamage();

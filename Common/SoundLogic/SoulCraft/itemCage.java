@@ -16,13 +16,15 @@ public class itemCage extends ItemBlock{
 		super(par1);
 		this.setHasSubtypes(true);
 	}
+    @Override
     public int getMetadata(int par1)
     {
         return par1;
     }
     
-    public String getItemNameIS(ItemStack par1ItemStack)
+    @Override
+    public String getUnlocalizedName (ItemStack par1ItemStack)
     {
-   	return "tile.soundlogic.cage."+par1ItemStack.getItemDamage();
+    	return "tile.soundlogic.cage."+par1ItemStack.getItemDamage();
     }
 }

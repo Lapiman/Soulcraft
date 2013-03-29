@@ -39,10 +39,12 @@ public class blockMesh extends Block
     {
     	return true;
     }
-    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving ent)
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving ent, ItemStack stack)
     {
     	this.onNeighborBlockChange(world, x, y, z, this.blockID);
     }
+    @Override
 	public int damageDropped(int par1)
 	{
 		return par1;
@@ -158,6 +160,7 @@ public class blockMesh extends Block
     			world.setBlockMetadataWithNotify(x, y, z, blockID, 1);
     	}
     }
+    @Override
     public void updateTick(World world,int x, int y, int z, Random random)
     {
         if (world.isRemote)
@@ -206,6 +209,7 @@ public class blockMesh extends Block
     			heat(world,x,y,z);
     	}
     }
+    @Override
     public void onFallenUpon(World world, int x, int y, int z,Entity ent, float fall)
     {
     	if(!canBeAt(world,x,y,z,fall))
@@ -214,6 +218,7 @@ public class blockMesh extends Block
     		world.setBlock(x, y, z, 0);
     	}
     }
+    @Override
     public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
     {
     	blocksTemp(world,x,y,z);
@@ -247,16 +252,19 @@ public class blockMesh extends Block
     		return count>1;
     	}
     }
+    @Override
     public boolean canPlaceBlockAt(World world, int x, int y,int z)
     {
     	if(super.canPlaceBlockAt(world,x,y,z))
     		return canBeAt(world,x,y,z,0F);
     	return false;
     }
+    @Override
     public boolean isOpaqueCube()
     {
         return false;
     }
+    @Override
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity)
     {
     	if(par5Entity instanceof EntityItem)
@@ -264,6 +272,7 @@ public class blockMesh extends Block
     	if(par5Entity instanceof EntityLiving && par1World.getBlockMetadata(par2,par3,par4)==0)
     		par5Entity.attackEntityFrom(DamageSource.onFire, 1);
     }
+    @Override
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
         for (int var4 = 0; var4 < 3; ++var4)
