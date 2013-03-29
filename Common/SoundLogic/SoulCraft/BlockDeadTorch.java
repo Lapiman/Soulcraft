@@ -20,8 +20,8 @@ import net.minecraft.world.*;
 
 public class BlockDeadTorch extends BlockTorch
 {
-    protected BlockDeadTorch(int ID, int tex) {
-		super(ID, tex);
+    protected BlockDeadTorch(int ID) {
+		super(ID);
 	}
 
 

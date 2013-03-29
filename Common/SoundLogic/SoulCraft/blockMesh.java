@@ -47,14 +47,6 @@ public class blockMesh extends Block
 	{
 		return par1;
 	}
-    public int getBlockTextureFromSideAndMetadata(int side, int meta)
-    {
-    	int base=meta*2+1;
-    	if(side<2)
-    		return base;
-    	else
-    		return base+1;
-    }
     public void blocksTemp(World world, int x, int y, int z)
     {
     	int metadata=world.getBlockMetadata(x, y, z);
@@ -69,19 +61,19 @@ public class blockMesh extends Block
     		if(world.getBlockId(nx, ny, nz)==Block.waterStill.blockID)
     		{
     			cool(world,x,y,z);
-    			world.setBlockWithNotify(nx, ny, nz, 0);
+    			world.setBlock(nx, ny, nz, 0);
     		}
     		if(world.getBlockId(nx, ny, nz)==Block.waterMoving.blockID)
     		{
     			cool(world,x,y,z);
-    			world.setBlockWithNotify(nx, ny, nz, 0);
+    			world.setBlock(nx, ny, nz, 0);
     		}
     		if(world.getBlockId(nx, ny, nz)==Block.ice.blockID)
     		{
     			if(metadata==0)
     			{
         			cool(world,x,y,z);
-        			world.setBlockWithNotify(nx, ny, nz, Block.waterStill.blockID);
+        			world.setBlock(nx, ny, nz, Block.waterStill.blockID);
     			}
     			if(metadata==1)
     			{
@@ -93,7 +85,7 @@ public class blockMesh extends Block
     			if(metadata==0)
     			{
         			cool(world,x,y,z);
-        			world.setBlockWithNotify(nx, ny, nz, 0);
+        			world.setBlock(nx, ny, nz, 0);
     			}
     			if(metadata==1)
     			{
@@ -109,7 +101,7 @@ public class blockMesh extends Block
     			if(metadata==2)
     			{
         			heat(world,x,y,z);
-        			world.setBlockWithNotify(nx, ny, nz, Block.obsidian.blockID);
+        			world.setBlock(nx, ny, nz, Block.obsidian.blockID);
     			}
     		}
     		if(world.getBlockId(nx, ny, nz)==Block.lavaMoving.blockID)
@@ -121,7 +113,7 @@ public class blockMesh extends Block
     			if(metadata==2)
     			{
         			heat(world,x,y,z);
-        			world.setBlockWithNotify(nx, ny, nz, Block.cobblestone.blockID);
+        			world.setBlock(nx, ny, nz, Block.cobblestone.blockID);
     			}
     		}
     		if(world.getBlockId(nx, ny, nz)==Block.fire.blockID)
@@ -137,7 +129,7 @@ public class blockMesh extends Block
     		if(world.getBlockMetadata(x,y,z)==0)
     			cool(world,x,y,z);
     		if(world.getBlockMetadata(x,y,z)==1)
-    			world.setBlockAndMetadataWithNotify(x, y, z, blockID, 2);
+    			world.setBlockMetadataWithNotify(x, y, z, blockID, 2);
     	}
     }
     public void warm(World world, int x, int y, int z)
@@ -145,7 +137,7 @@ public class blockMesh extends Block
     	if(world.getBlockId(x, y, z)==blockID)
     	{
     		if(world.getBlockMetadata(x,y,z)==2)
-    			world.setBlockAndMetadataWithNotify(x, y, z, blockID, 1);
+    			world.setBlockMetadataWithNotify(x, y, z, blockID, 1);
     	}
     }
     public void heat(World world, int x, int y, int z)
@@ -155,7 +147,7 @@ public class blockMesh extends Block
     		if(world.getBlockMetadata(x,y,z)==2)
     			warm(world,x,y,z);
     		if(world.getBlockMetadata(x,y,z)==1)
-    			world.setBlockAndMetadataWithNotify(x, y, z, blockID, 0);
+    			world.setBlockMetadataWithNotify(x, y, z, blockID, 0);
     	}
     }
     public void cool(World world, int x, int y, int z)
@@ -163,7 +155,7 @@ public class blockMesh extends Block
     	if(world.getBlockId(x, y, z)==blockID)
     	{
     		if(world.getBlockMetadata(x,y,z)==0)
-    			world.setBlockAndMetadataWithNotify(x, y, z, blockID, 1);
+    			world.setBlockMetadataWithNotify(x, y, z, blockID, 1);
     	}
     }
     public void updateTick(World world,int x, int y, int z, Random random)
@@ -219,7 +211,7 @@ public class blockMesh extends Block
     	if(!canBeAt(world,x,y,z,fall))
     	{
     		this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-    		world.setBlockWithNotify(x, y, z, 0);
+    		world.setBlock(x, y, z, 0);
     	}
     }
     public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
@@ -228,7 +220,7 @@ public class blockMesh extends Block
     	if(!canBeAt(world,x,y,z,0))
     	{
     		this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-    		world.setBlockWithNotify(x, y, z, 0);
+    		world.setBlock(x, y, z, 0);
     	}
     }
     public boolean canBeAt(World world,int x, int y, int z, float force)

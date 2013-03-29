@@ -45,9 +45,9 @@ public class BlockFakeFire extends BlockContainer
     {
     	return damage;
     }
-    public BlockFakeFire(int par1, int par2,boolean damage)
+    public BlockFakeFire(int par1,boolean damage)
     {
-        super(par1, par2, Material.fire);
+        super(par1, Material.fire);
         this.setTickRandomly(true);
         this.damage=damage;
         this.setCreativeTab(CreativeTabs.tabBlock);

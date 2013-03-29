@@ -93,53 +93,36 @@ public class CommonProxy {
     public void RegisterItems()
 	{
 	    DebugItem=new ItemBlockPrimer(DebugItemID);
+	    DebugItem.setUnlocalizedName("soundlogic.debugitem");
 	    DebugItem.setCreativeTab(CreativeTabs.tabMisc);
 	    SoulWhisp=new ItemSoundLogic(SoulWhispID);
 	    SoulWhisp.setUnlocalizedName("soundlogic.soulWhisp");
-	    SoulWhisp.setTextureFile(SoulMod.itemsImage);
-	    SoulWhisp.setIconCoord(8, 0);
 	    SoulWhisp.setCreativeTab(CreativeTabs.tabMisc);
 	    muckBucket=new ItemSoundLogic(muckBucketID);
-	    muckBucket.setTextureFile(SoulMod.itemsImage);
 	    muckBucket.setUnlocalizedName("soundlogic.muckBucket");
-	    muckBucket.setIconCoord(0,0);
 	    muckBucket.setCreativeTab(CreativeTabs.tabMisc);
 	    liquidSoul=new ItemSoundLogic(liquidSoulID);
-	    liquidSoul.setTextureFile(SoulMod.itemsImage);
 	    liquidSoul.setUnlocalizedName("soundlogic.liquidSoul");
-	    liquidSoul.setIconCoord(1, 0);
 	    liquidSoul.setCreativeTab(CreativeTabs.tabMisc);
 	    gelledSoul=new ItemSoundLogic(gelledSoulID);
-	    gelledSoul.setTextureFile(SoulMod.itemsImage);
 	    gelledSoul.setUnlocalizedName("soundlogic.gelledSoul");
-	    gelledSoul.setIconCoord(3,0);
 	    gelledSoul.setCreativeTab(CreativeTabs.tabMisc);
 	    bottledGellSoul=new ItemSoundLogic(bottledGellSoulID);
-	    bottledGellSoul.setTextureFile(SoulMod.itemsImage);
 	    bottledGellSoul.setUnlocalizedName("soundlogic.bottledGellSoul");
-	    bottledGellSoul.setIconCoord(2, 0);
 	    bottledGellSoul.setCreativeTab(CreativeTabs.tabMisc);
 	    paperFunnel=new ItemSoundLogic(paperFunnelID);
-	    paperFunnel.setTextureFile(SoulMod.itemsImage);
 	    paperFunnel.setUnlocalizedName("soundlogic.paperFunnel");
-	    paperFunnel.setIconCoord(4, 0);
 	    paperFunnel.setCreativeTab(CreativeTabs.tabMisc);
 	    blazeFilter=new ItemSoundLogic(blazeFilterID);
-	    blazeFilter.setTextureFile(SoulMod.itemsImage);
 	    blazeFilter.setUnlocalizedName("soundlogic.blazeFilter");
-	    blazeFilter.setIconCoord(5, 0);
 	    blazeFilter.setCreativeTab(CreativeTabs.tabMisc);
 	    hauntedItem=new ItemHaunted(hauntedItemID);
+	    hauntedItem.setUnlocalizedName("soundlogic.haunteditembase");
 	    bottledTear=new ItemSoundLogic(bottledTearID);
 	    bottledTear.setUnlocalizedName("soundlogic.bottledTear");
-	    bottledTear.setTextureFile(SoulMod.itemsImage);
-	    bottledTear.setIconCoord(6, 0);
 	    bottledTear.setCreativeTab(CreativeTabs.tabMisc);
 	    soulVapor=new ItemSoundLogic(soulVaporID);
-	    soulVapor.setTextureFile(SoulMod.itemsImage);
 	    soulVapor.setUnlocalizedName("soundlogic.soulVapor");
-	    soulVapor.setTextureFile(SoulMod.itemsImage);
-	    soulVapor.setIconCoord(7, 0);
 	    soulVapor.setCreativeTab(CreativeTabs.tabMisc);
         bottledGellSoul.setContainerItem(Item.glassBottle);
         liquidSoul.setContainerItem(Item.glassBottle);
@@ -158,19 +141,17 @@ public class CommonProxy {
 	}
 	public void RegisterBlocks()
 	{
-		fakeFire=new BlockFakeFire(fakeFireID, 31,false).setHardness(0.0F).setLightValue(1.0F);
+		fakeFire=new BlockFakeFire(fakeFireID,false).setHardness(0.0F).setLightValue(1.0F);
+        fakeFire.setUnlocalizedName("soundlogic.fakeFire");
         GameRegistry.registerBlock(fakeFire);
-        fakeFire.setBlockName("soundlogic.fakeFire");
-		fakeFireDmg=new BlockFakeFire(fakeFireDmgID, 31,true).setHardness(0.0F).setLightValue(1.0F);
+		fakeFireDmg=new BlockFakeFire(fakeFireDmgID,true).setHardness(0.0F).setLightValue(1.0F);
+        fakeFireDmg.setUnlocalizedName("soundlogic.fakeFireDmg");
         GameRegistry.registerBlock(fakeFireDmg);
-        fakeFireDmg.setBlockName("soundlogic.fakeFireDmg");
-        DeadTorch=new BlockDeadTorch(DeadTorchID,115);
-        DeadTorch.setBlockName("soundlogic.deadTorch");
+        DeadTorch=new BlockDeadTorch(DeadTorchID);
+        DeadTorch.setUnlocalizedName("soundlogic.deadTorch");
         GameRegistry.registerBlock(DeadTorch);
         CompressedSoul=new BlockCompSoulSand(CompressedSoulID).setHardness(1.5F);
-        CompressedSoul.setBlockName("soundlogic.compressedSoul");
-        CompressedSoul.blockIndexInTexture=8;
-        CompressedSoul.setTextureFile(SoulMod.terrainImage);
+        CompressedSoul.setUnlocalizedName("soundlogic.compressedSoul");
         GameRegistry.registerBlock(CompressedSoul);
 /*        MuckFlowing=new BlockSoulMuckFlowing(MuckStillID,Material.water);
         MuckFlowing.setBlockName("soundlogic.MuckFlowing");
@@ -183,20 +164,16 @@ public class CommonProxy {
         MuckStill.setTextureFile(SoulMod.terrainImage);
         GameRegistry.registerBlock(MuckStill);*/
         BlockCage = new blockCage(BlockCageID);
-        BlockCage.setTextureFile(SoulMod.terrainImage);
-        BlockCage.blockIndexInTexture=1;
-        BlockCage.setBlockName("soundlogic.cage");
+        BlockCage.setUnlocalizedName("soundlogic.cage");
         GameRegistry.registerBlock(BlockCage,itemCage.class);
         BlockIceCage = new blockIceCage(BlockIceCageID);
-        BlockIceCage.setTextureFile(SoulMod.terrainImage);
-        BlockIceCage.blockIndexInTexture=11;
-        BlockIceCage.setBlockName("soundlogic.cage.ice");
+        BlockIceCage.setUnlocalizedName("soundlogic.cage.ice");
         GameRegistry.registerBlock(BlockIceCage);
         BlockMesh = new blockMesh(BlockMeshID);
-        BlockMesh.setTextureFile(SoulMod.terrainImage);
-        BlockMesh.blockIndexInTexture=1;
+        BlockMesh.setUnlocalizedName("soundlogic.mesh");
         GameRegistry.registerBlock(BlockMesh,itemMesh.class);
         BlockHaunt = new BlockHauntCube(HauntCubeID);
+        BlockHaunt.setUnlocalizedName("soundlogic.testblock");
         GameRegistry.registerBlock(BlockHaunt,itemHauntCube.class);
         GameRegistry.registerTileEntity(TileEntitySimpleHaunt.class, "SimpleHaunt");
         GameRegistry.registerTileEntity(TileEntitySpecialFire.class, "SpecialFire");
@@ -295,8 +272,8 @@ public class CommonProxy {
         soulMuckRecipe=CursedCrafting.buildSimpleShapeless(new ItemStack(muckBucket), new Object[] {Item.bucketWater,CompressedSoul});
         GameRegistry.addRecipe(soulMuckRecipe);
 
-		GameRegistry.addSmelting(liquidSoul.shiftedIndex, new ItemStack(soulVapor),0);
-		GameRegistry.addSmelting(bottledGellSoul.shiftedIndex, new ItemStack(bottledTear),0);
+		GameRegistry.addSmelting(liquidSoul.itemID, new ItemStack(soulVapor),0);
+		GameRegistry.addSmelting(bottledGellSoul.itemID, new ItemStack(bottledTear),0);
 	}
 	public void InitLang()
 	{

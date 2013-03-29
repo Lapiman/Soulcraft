@@ -10,8 +10,6 @@ import cpw.mods.fml.common.SidedProxy;
 @NetworkMod(clientSideRequired=true, serverSideRequired=false, channels={"SoulCraftEvents"}, packetHandler = PacketHandler.class)
 
 public class SoulMod {
-	public static final String itemsImage="/SoundLogic/SoulCraft/items.png";
-	public static final String terrainImage="/SoundLogic/SoulCraft/terrain.png";
 	@SidedProxy(clientSide = "SoundLogic.SoulCraft.ClientProxy", serverSide = "SoundLogic.SoulCraft.CommonProxy")
 	public static CommonProxy proxy;
 	@Init
