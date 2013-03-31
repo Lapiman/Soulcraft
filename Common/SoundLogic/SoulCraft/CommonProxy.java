@@ -151,7 +151,7 @@ public class CommonProxy {
         DeadTorch.setUnlocalizedName("soundlogic.deadTorch");
         GameRegistry.registerBlock(DeadTorch);
         CompressedSoul=new BlockCompSoulSand(CompressedSoulID).setHardness(1.5F);
-        CompressedSoul.setUnlocalizedName("soundlogic.compressedSoul");
+        CompressedSoul.setUnlocalizedName("soundlogic.compressedSoulSand");
         GameRegistry.registerBlock(CompressedSoul);
 /*        MuckFlowing=new BlockSoulMuckFlowing(MuckStillID,Material.water);
         MuckFlowing.setBlockName("soundlogic.MuckFlowing");
@@ -302,7 +302,7 @@ public class CommonProxy {
 		LanguageRegistry.instance().addStringLocalization("item.soundlogic.hauntedBucket.name","Haunted Bucket");
 		LanguageRegistry.instance().addStringLocalization("item.soundlogic.bottledTear.name","Bottled Tear");
 		LanguageRegistry.instance().addStringLocalization("item.soundlogic.soulVapor.name","Bottle of Soul Vapor");
-		LanguageRegistry.instance().addStringLocalization("tile.soundlogic.compressedSoul.name","Compressed Soul Sand");
+		LanguageRegistry.instance().addStringLocalization("tile.soundlogic.compressedSoulSand.name","Compressed Soul Sand");
 		LanguageRegistry.instance().addStringLocalization("tile.soundlogic.mesh.0.name", "Blaze Mesh");
 		LanguageRegistry.instance().addStringLocalization("tile.soundlogic.mesh.1.name", "Cooled Blaze Mesh");
 		LanguageRegistry.instance().addStringLocalization("tile.soundlogic.mesh.2.name", "Frozen Blaze Mesh");

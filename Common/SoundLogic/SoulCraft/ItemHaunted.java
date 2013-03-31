@@ -1,10 +1,14 @@
 package SoundLogic.SoulCraft;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.texture.TextureStitched;
 import net.minecraft.creativetab.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;
@@ -15,10 +19,34 @@ import net.minecraft.world.*;
 
 public class ItemHaunted extends Item{
 	public static ItemHaunted instance;
+	public static TextureStitched Base;
+	public static Map<TextureStitched,TextureHaunted> icons=new HashMap<TextureStitched,TextureHaunted>();
+	TextureMap textureMap;
 	protected ItemHaunted(int par1) {
 		super(par1);
 		SoulMod.proxy.RegisterAsHaunted(this);
         instance=this;
+	}
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
+	{
+		for(TextureHaunted icon : icons.values())
+		{
+			icon.updateAnimation();
+		}
+		return stack;
+	}
+	public Icon getIcon(ItemStack stack, int renderpass)
+	{
+		TextureStitched original=(TextureStitched) this.getBaseItemStack(stack).getIconIndex();
+		if(icons.containsKey(original))
+			return icons.get(original);
+		else
+		{
+			TextureHaunted icon=new TextureHaunted(original);
+			icons.put(original, icon);
+			this.textureMap.setTextureEntry("HAUNTED ICON FOR "+original.getIconName(), icon);
+			return icon;
+		}
 	}
 	public ItemStack hauntStack(ItemStack stack,int level)
 	{
@@ -71,4 +99,10 @@ public class ItemHaunted extends Item{
 			haunted.stackTagCompound.setCompoundTag("OriginalStackNBT",oldCompound);
 		return haunted;
 	}
+    @Override
+    public void updateIcons(IconRegister par1IconRegister)
+    {
+    	this.textureMap=(TextureMap)par1IconRegister;
+    	this.Base = (TextureStitched) par1IconRegister.registerIcon("BLANKTEX");
+    }
 }

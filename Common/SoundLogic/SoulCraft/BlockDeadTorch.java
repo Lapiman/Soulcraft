@@ -34,6 +34,11 @@ public class BlockDeadTorch extends BlockTorch
     {
         return Item.stick.itemID;
     }
+    @Override
+    public Icon getBlockTextureFromSideAndMetadata(int side, int meta)
+    {
+    	return Block.torchRedstoneIdle.getBlockTextureFromSideAndMetadata(side, meta);
+    }
 
 
     @SideOnly(Side.CLIENT)

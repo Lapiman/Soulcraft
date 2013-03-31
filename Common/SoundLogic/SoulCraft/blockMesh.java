@@ -8,6 +8,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.item.EntityItem;
@@ -23,6 +24,8 @@ public class blockMesh extends Block
 	//0=blaze
 	//1=cooled
 	//2=chilled
+	Icon[] topIcons=new Icon[3];
+	Icon[] sideIcons=new Icon[3];
     public blockMesh(int par1)
     {
         super(par1, Material.fire);
@@ -280,4 +283,22 @@ public class blockMesh extends Block
             par3List.add(new ItemStack(par1, 1, var4));
         }
     }
+    @Override
+    public Icon getBlockTextureFromSideAndMetadata(int side, int meta)
+    {
+    	if(side<2)
+    		return topIcons[meta];
+    	else
+    		return sideIcons[meta];
+    }
+    @Override
+	public void registerIcons(IconRegister par1IconRegister)
+	{
+    	topIcons[0]=par1IconRegister.registerIcon(SoulMod.modid+":BlazeMeshTopHot");
+    	topIcons[1]=par1IconRegister.registerIcon(SoulMod.modid+":BlazeMeshTopNormal");
+    	topIcons[2]=par1IconRegister.registerIcon(SoulMod.modid+":BlazeMeshTopCold");
+    	sideIcons[0]=par1IconRegister.registerIcon(SoulMod.modid+":BlazeMeshSideHot");
+    	sideIcons[1]=par1IconRegister.registerIcon(SoulMod.modid+":BlazeMeshSideNormal");
+    	sideIcons[2]=par1IconRegister.registerIcon(SoulMod.modid+":BlazeMeshSideCold");
+	}
 }

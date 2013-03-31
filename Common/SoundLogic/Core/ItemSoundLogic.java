@@ -28,6 +28,7 @@ public class ItemSoundLogic extends Item
     @Override
     public void updateIcons(IconRegister par1IconRegister)
     {
-        this.iconIndex = par1IconRegister.registerIcon(modid + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1));
+    	String reg=modid + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1);
+        this.iconIndex = par1IconRegister.registerIcon(modid + ":" + reg.substring(reg.indexOf(".") + 1));
     }
 }

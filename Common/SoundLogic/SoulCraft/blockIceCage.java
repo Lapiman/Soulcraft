@@ -21,6 +21,7 @@ public class blockIceCage extends Block
         this.setHardness(2.0F);
         this.setCreativeTab(CreativeTabs.tabBlock);
     }
+    @Override
     public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune)
     {
     	ArrayList<ItemStack> items=new ArrayList();
@@ -28,6 +29,7 @@ public class blockIceCage extends Block
     	items.add(new ItemStack(SoulMod.proxy.BlockMesh,8,2));
     	return items;
     }
+    @Override
     public boolean isOpaqueCube()
     {
         return false;

@@ -145,7 +145,8 @@ public class ClientSideEvents {
 	    }
 		private void flashCreeperColor(float partialTick)
 		{
-			int var18=updateCreeperColorMultiplier(player.worldObj.getLightBrightness((int)x,(int)y,(int)z),partialTick);
+			float light=player.worldObj.getLightBrightness((int)x,(int)y,(int)z);
+			int var18=updateCreeperColorMultiplier(light,partialTick);
             float var19 = (float)(var18 >> 16 & 255) / 255.0F;
             float var20 = (float)(var18 >> 8 & 255) / 255.0F;
             float var29 = (float)(var18 & 255) / 255.0F;
@@ -166,6 +167,7 @@ public class ClientSideEvents {
 			return angle<15;
 		}
 		@Override
+
 		public void render(float partialTick) {
 			if(!active){return;}
 			ModelCreeper creep=new ModelCreeper();
@@ -187,7 +189,6 @@ public class ClientSideEvents {
 			modelrenderer.render(0.0625F);
 			}
             GL11.glDisable(GL11.GL_TEXTURE_2D);
-            GL11.glDisable(GL11.GL_ALPHA_TEST);
             GL11.glEnable(GL11.GL_BLEND);
             GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
             GL11.glDepthFunc(GL11.GL_EQUAL);

@@ -2,6 +2,7 @@ package SoundLogic.SoulCraft;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.*;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.*;
@@ -37,5 +38,11 @@ public class BlockCompSoulSand extends Block
         {
         	((EntityPlayer) par5Entity).addExhaustion(.25F);
         }
+    }
+    @Override
+    public void registerIcons(IconRegister par1IconRegister)
+    {
+    	String reg=SoulMod.modid + ":" + this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".") + 1);
+        this.blockIcon = par1IconRegister.registerIcon(SoulMod.modid + ":" + reg.substring(reg.indexOf(".") + 1));
     }
 }
