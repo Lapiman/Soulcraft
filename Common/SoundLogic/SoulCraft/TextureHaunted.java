@@ -32,15 +32,52 @@ public class TextureHaunted extends TextureStitched
         this.copyFrom(ItemHaunted.Base);
         original=icon;
     }
+
+    @SideOnly(Side.CLIENT)
     public void updateAnimation()
     {
-    	BufferedImage result=funkyRender();
-    	int var1=result.getWidth();
-    	int var2=result.getHeight();
-        Texture tex=TextureManager.instance().makeTexture("HAUNTED "+original.getIconName(), 0, 0, 0, 0, 0, 0, 0, true,result);
-        this.textureSheet.copyFrom(this.originX, this.originY, tex, this.rotated);
+    	byte[] result=funkyRender();
+//        Texture tex=TextureManager.instance().makeTexture("HAUNTED "+original.getIconName(), 0, 0, 0, 0, 0, 0, 0, true,result);
+        this.copyFrom(this.originX, this.originY, result, this.rotated);
     }
-    public BufferedImage funkyRender()
+	
+    @SideOnly(Side.CLIENT)
+    public void copyFrom(int par1, int par2, byte[] bytes, boolean par4)
+    {
+        this.textureSheet.getTextureData().position(0);
+        int constant=16;
+        for (int k = 0; k < constant; ++k)
+        {
+            int l = par2 + k;
+            int i1 = k * constant * 3;
+            int j1 = l * this.textureSheet.getWidth() * 4;
+             if (par4)
+            {
+                    l = par2 + (16 - k);
+                }
+
+                for (int k1 = 0; k1 < constant; ++k1)
+                {
+                    int l1 = j1 + (k1 + par1) * 4;
+                    int i2 = i1 + k1 * 3;
+
+                    if (par4)
+                    {
+                        l1 = par1 + k1 * this.textureSheet.getWidth() * 4 + l * 4;
+                    }
+                    int test=bytes.length;
+                    this.textureSheet.getTextureData().put(l1 + 0, bytes[i2 + 0]);
+                    this.textureSheet.getTextureData().put(l1 + 1, bytes[i2 + 1]);
+                    this.textureSheet.getTextureData().put(l1 + 2, bytes[i2 + 2]);
+                    this.textureSheet.getTextureData().put(l1 + 3, (byte) 255);
+                }
+            }
+
+            this.textureSheet.getTextureData().position(16 * 16 * 4);
+    }
+
+	@SideOnly(Side.CLIENT)
+    public byte[] funkyRender()
     {
         Tessellator tessellator = Tessellator.instance;
         float f = original.getMinU();
@@ -80,7 +117,7 @@ public class TextureHaunted extends TextureStitched
         GL11.glRotatef(10.0F, 0.0F, 0.0F, 1.0F);
         renderItemIn2D(tessellator, 0.0F, 0.0F, 1.0F, 1.0F, 256, 256, 0.0625F);
         GL11.glPopMatrix();
-        BufferedImage img=toImage(grabScreen(),16,16);
+        byte[] img=grabScreen();
         GL11.glMatrixMode(GL11.GL_MODELVIEW);
         GL11.glDisable(GL11.GL_BLEND);
         GL11.glEnable(GL11.GL_LIGHTING);
@@ -88,6 +125,7 @@ public class TextureHaunted extends TextureStitched
         GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         return img;
     }
+	@SideOnly(Side.CLIENT)
     public static void renderItemIn2D(Tessellator par0Tessellator, float par1, float par2, float par3, float par4, int par5, int par6, float par7)
     {
         par0Tessellator.startDrawingQuads();
@@ -169,6 +207,7 @@ public class TextureHaunted extends TextureStitched
 
         par0Tessellator.draw();
     }
+	@SideOnly(Side.CLIENT)
     private static synchronized byte[] grabScreen()
     {
         int w = 16;
@@ -181,6 +220,7 @@ public class TextureHaunted extends TextureStitched
         bufor.get(byteimg, 0, byteimg.length);
         return byteimg;
     }
+	@SideOnly(Side.CLIENT)
     BufferedImage toImage(byte[] data, int w, int h)
     {
         if (data.length == 0)

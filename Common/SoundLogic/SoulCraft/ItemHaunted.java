@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.*;
 import net.minecraft.block.material.*;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -29,12 +32,15 @@ public class ItemHaunted extends Item{
 	}
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
 	{
+		if(!world.isRemote) return stack;
 		for(TextureHaunted icon : icons.values())
 		{
 			icon.updateAnimation();
 		}
 		return stack;
 	}
+	@Override
+	@SideOnly(Side.CLIENT)
 	public Icon getIcon(ItemStack stack, int renderpass)
 	{
 		TextureStitched original=(TextureStitched) this.getBaseItemStack(stack).getIconIndex();
@@ -100,6 +106,7 @@ public class ItemHaunted extends Item{
 		return haunted;
 	}
     @Override
+	@SideOnly(Side.CLIENT)
     public void updateIcons(IconRegister par1IconRegister)
     {
     	this.textureMap=(TextureMap)par1IconRegister;
